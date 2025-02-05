@@ -40,21 +40,28 @@ const Dashboard = () => {
   };
 
   return (
-    <Container>
-      {users.map((user,index) => (
-        <div key={index}>
-          <h3>{user.username}</h3>
-          <h3>{user.email}</h3>
-        </div>
-      ))}
+    <Container className="text center w-50">
+      <div className="mt-5">
+        <h1 className="p-2 border border-black bg-tertiary">Dashboard</h1>
+        <br />
+        <h3>Email: {email}</h3>
+        <h5>Name: {username}</h5>
 
-      <Button onClick={fetchUsers}>Fetch Users</Button>
-      {/* Your component JSX here */}
-      <h1>Dashboard</h1>
-      <h3>{email}</h3>
-      <h5>{username}</h5>
+        <button className="button" onClick={handleLogout}>
+          Logout
+        </button>
 
-      <Button onClick={handleLogout}>Logout</Button>
+        {users.map((user, index) => (
+          <div key={index} className="mt-4">
+            <h3>{user.username}</h3>
+            <h3>{user.email}</h3>
+          </div>
+        ))}
+
+        <button className="button" onClick={fetchUsers}>
+          Fetch Users
+        </button>
+      </div>
     </Container>
   );
 };

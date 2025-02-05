@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { forgetUser } from "../redux/Slice";
 import { Spinner, Button, Form, Alert } from "react-bootstrap";
+import "./Resuable.scss"
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
@@ -42,9 +43,9 @@ const ForgetPassword = () => {
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit" disabled={isLoading}>
+          <button className="button" type="submit" disabled={isLoading}>
             {isLoading ? <Spinner animation="border" size="sm" /> : "Submit"}
-          </Button>
+          </button>
         </Form>
       </div>
     </div>

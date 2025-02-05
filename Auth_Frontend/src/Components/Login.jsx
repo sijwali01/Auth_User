@@ -11,6 +11,8 @@ import {
   Alert,
   Spinner,
 } from "react-bootstrap";
+import "./Resuable.scss";
+import Loader from "./Loader";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -33,6 +35,9 @@ const Login = () => {
         } else {
           console.log("No token found in response");
           setErrorMessage("Login failed. Please check your credentials.");
+          setTimeout(() => {
+            setErrorMessage("");
+          }, 3000);
         }
       })
       .catch((error) => {
@@ -61,8 +66,8 @@ const Login = () => {
             <h2 className="text-center mb-4">Login</h2>
 
             {isLoading && (
-              <div className="d-flex justify-content-center mb-3">
-                <Spinner animation="border" />
+              <div className="d-flex justify-content-center m-2">
+                <Loader />
               </div>
             )}
 
@@ -94,23 +99,25 @@ const Login = () => {
               </Form.Group>
 
               <div className="d-grid gap-2">
-                <Button variant="primary" type="submit" disabled={isLoading}>
+                <button className="button" type="submit" disabled={isLoading}>
                   {isLoading ? "Logging in..." : "Login"}
-                </Button>
-                <Button
-                  variant="secondary"
+                </button>
+                <button
+                  className="button"
+                  // variant="secondary"
                   onClick={handleSignup}
                   disabled={isLoading}
                 >
-                  Already have an account? Signup
-                </Button>
-                <Button
-                  variant="secondary"
+                  Create an account? Signup
+                </button>
+                <button
+                  className="button"
+                  // variant="secondary"
                   onClick={handleForget}
                   disabled={isLoading}
                 >
                   Forget Password
-                </Button>
+                </button>
               </div>
             </Form>
           </div>

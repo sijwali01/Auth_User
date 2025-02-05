@@ -7,10 +7,10 @@ import {
   Row,
   Col,
   Form,
-  Button,
   Alert,
-  Spinner,
 } from "react-bootstrap";
+import './Resuable.scss'
+import Loader from "./Loader";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -19,7 +19,7 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const dispatch = useDispatch();
-  const { isLoading } = useSelector((state) => state.user); // Assuming isLoading is used here
+  const { isLoading } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
 
@@ -34,7 +34,12 @@ const Signup = () => {
 
     // Dispatch signup action
     try {
-      dispatch(signupUser({ username, email, password ,confirmPassword }));
+      const response = dispatch(signupUser({ username, email, password ,confirmPassword }));
+      if(response.status == 200){
+        setMessage("User created successfully! Please check your email to activate your account.");
+      }else{
+        setErrorMessage("An error occurred. Please try again.");
+      }
     } catch (error) { 
       setErrorMessage("An error occurred. Please try again.");
     }
@@ -52,7 +57,7 @@ const Signup = () => {
       //   console.error("Signup error:", error);
       //   setErrorMessage("An error occurred. Please try again.");
       // });
-    setMessage("User created successfully! Please check your email to activate your account.");
+   
     setUsername("");
     setEmail("");
     setPassword("");
@@ -74,8 +79,8 @@ const Signup = () => {
             <h2 className="text-center mb-4">Sign Up</h2>
 
             {isLoading && (
-              <div className="d-flex justify-content-center mb-3">
-                <Spinner animation="border" />
+              <div className="d-flex justify-content-center m-2">
+                <Loader />
               </div>
             )}
 
@@ -128,16 +133,17 @@ const Signup = () => {
               </Form.Group>
 
               <div className="d-grid gap-2">
-                <Button variant="primary" type="submit" disabled={isLoading}>
+                <button className="button" type="submit" disabled={isLoading}>
                   {isLoading ? "Signing up..." : "Sign Up"}
-                </Button>
-                <Button
-                  variant="secondary"
+                </button>
+                <button
+                className="button"
+                  // variant="secondary"
                   onClick={handleLoginRedirect}
                   disabled={isLoading}
                 >
                   Already have an account? Login
-                </Button>
+                </button>
               </div>
             </Form>
           </div>

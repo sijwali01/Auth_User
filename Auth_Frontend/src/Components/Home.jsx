@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./Resuable.scss";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -13,18 +14,16 @@ const Home = () => {
   };
 
   return (
-    <div className="home-container">
+    <div className="home-container text-center w-50 mx-auto mt-5">
       <h1>Welcome to Our App!</h1>
       <p>Please choose an option:</p>
-      <div className="button-group">
-        <button onClick={handleSignUp} className="btn btn-primary">
+        <button onClick={handleSignUp} className="button mb-3">
           Sign Up
         </button>
-        <button onClick={handleLogin} className="btn btn-secondary">
+        <button onClick={handleLogin} className="button">
           Login
         </button>
       </div>
-    </div>
   );
 };
 
