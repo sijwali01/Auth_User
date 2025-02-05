@@ -1,4 +1,4 @@
-1 . Create a sign up form which will have fields username , email , password and confirm password after when you sign up empty the form.
+1 . Create a sign up form which will have fields username , email , password and confirm password after when you sign up empty the form./n
 2. send post api request to backend using redux asynch functions 
 3. Create the user in backend and send mail to the email user added like click on this link to activate this account 
 4. Create a path for the url you will send from backend to user mail and show in frontend .
